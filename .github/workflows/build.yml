@@ -1,0 +1,48 @@
+name: Build APK
+
+# Every push to main builds the app and publishes the APK as a GitHub Release,
+# so it can be downloaded straight from the phone at /releases.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Name the APK
+        run: cp app/build/outputs/apk/debug/app-debug.apk "FLazy-v1.0.${{ github.run_number }}.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FLazy-v1.0.${{ github.run_number }}
+          path: FLazy-*.apk
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: FLazy v1.0.${{ github.run_number }}
+          make_latest: "true"
+          body: |
+            Tải file **FLazy-v1.0.${{ github.run_number }}.apk** bên dưới về điện thoại rồi mở để cài.
+            Bản mới cài đè lên bản cũ, không cần gỡ.
+          files: FLazy-*.apk

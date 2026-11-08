@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FLazy</string>
+    <string name="service_label">FLazy – quét sách</string>
+    <string name="service_description">FLazy chụp màn hình trang sách đang mở, nhận dạng chữ Trung ngay trên máy và tự lật sang trang tiếp theo. FLazy chỉ hoạt động khi bạn bấm nút ▶ trên nút nổi, không đọc nội dung của app khác theo cách nào khác, không có quyền Internet và không gửi dữ liệu đi đâu. Văn bản quét được chỉ lưu trong máy bạn.</string>
+</resources>
