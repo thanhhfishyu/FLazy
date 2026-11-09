@@ -66,3 +66,7 @@ File cũng được sao một bản vào thư mục **Download/FLazy** trên má
 | `PageText.kt` | Ghép dòng thành đoạn, so sánh trang, bỏ phần trùng khi cuộn |
 | `BookStore.kt` | Lưu file `.txt`, sao ra Download/FLazy |
 | `MainActivity.kt` | Màn hình cài đặt và danh sách sách đã quét |
+
+## Giấy phép
+
+Phát hành theo giấy phép MIT. Xem file [LICENSE](LICENSE).
